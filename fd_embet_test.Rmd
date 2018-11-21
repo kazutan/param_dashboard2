@@ -1,0 +1,138 @@
+---
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(htmltools)
+library(tidyverse)
+```
+
+```{r, echo=FALSE, eval=TRUE}
+html_list <- dir() %>% 
+  str_subset("^out")
+
+side_area <- tagList(
+  htmltools::tags$style(
+    type = "text/css", 
+    paste(sep = "\n", "<!--", "div.sidearea {", htmltools::css(position = "relative", 
+            width = "10%", `padding-top` = "56.25%"), "}", "div.sidearea form {", 
+            htmltools::css(position = "absolute", top = 0, left = 0, 
+                width = "100%", height = "100%"), "}", "-->")),   
+  tags$div(class = "sidearea",
+           tags$a(href = html_list[1], html_list[1], target = "dashboard"),
+           tags$br(),
+           tags$a(href = html_list[2], html_list[2], target = "dashboard")
+           )
+)
+
+xxx <- tagList(
+  htmltools::tags$style(
+    type = "text/css", 
+    paste(sep = "\n", "<!--", "div.iframeWrap {", htmltools::css(position = "relative", 
+            width = "88%", `padding-top` = "56.25%"), "}", "div.iframeWrap iframe {", 
+            htmltools::css(position = "absolute", top = 0, left = "10%", 
+                width = "85%", height = "100%"), "}", "-->")), 
+  htmltools::tags$div(class = "iframeWrap",
+                      htmltools::tags$iframe(src = "",
+                                             width="1000",
+                                             frameborder = "0",
+                                             name = "dashboard",
+                                             id = "dashboard"))
+)
+side_area
+xxx
+
+```
+
+
+```{r, echo=FALSE, eval=FALSE}
+html_list <- dir() %>% 
+  str_subset("^out")
+
+side_area <- tagList(
+  htmltools::tags$style(
+    type = "text/css", 
+    paste(sep = "\n", "<!--", "div.sidearea {", htmltools::css(position = "relative", 
+            width = "10%", `padding-top` = "56.25%"), "}", "div.sidearea form {", 
+            htmltools::css(position = "absolute", top = 0, left = 0, 
+                width = "100%", height = "100%"), "}", "-->")),   
+  tags$div(class = "sidearea",
+           tags$form(method = "post",
+                     tags$input(name = "hoge",
+                                type = "radio",
+                                onclick = paste0('go(', html_list[1], ')', sep = "'"),
+                                html_list[1]),
+                     tags$input(name = "hoge",
+                                type = "radio",
+                                onclick = paste0('go(', html_list[2], ')', sep = "'"),
+                                html_list[2])
+                     ))
+)
+
+xxx <- tagList(
+  htmltools::tags$style(
+    type = "text/css", 
+    paste(sep = "\n", "<!--", "div.iframeWrap {", htmltools::css(position = "relative", 
+            width = "88%", `padding-top` = "56.25%"), "}", "div.iframeWrap iframe {", 
+            htmltools::css(position = "absolute", top = 0, left = "10%", 
+                width = "85%", height = "100%"), "}", "-->")), 
+  htmltools::tags$div(class = "iframeWrap",
+                      htmltools::tags$iframe(src = "",
+                                             width="1000",
+                                             frameborder = "0",
+                                             id = "dashboard"))
+)
+side_area
+xxx
+
+```
+
+
+<script type="text/javascript">
+document.getElementById("dashboard").src="out1002.html";
+</script>
+```{js, echo=FALSE, eval=FALSE}
+$(function() {
+    $("#btnChange").click(function() {
+        $("#frameSample").attr("src", "out1002.html");
+    });
+});
+```
+
+
+
+```{r, echo=FALSE, eval=FALSE}
+html_list <- dir() %>% 
+  str_subset("^out")
+
+side_area <- tagList(
+  htmltools::tags$style(
+    type = "text/css", 
+    paste(sep = "\n",
+          "<!--",
+          "div.sidearea {", htmltools::css(float = "left", width = "18%"), "}",
+          "div.sidearea button {", htmltools::css(position = "absolute",
+                                              top = 0, left = 0),
+          "-->")),   
+  tags$div(class = "sidearea",
+           tags$button(id = "btnChange", "change"))
+)
+xxx <- tagList(
+  htmltools::tags$style(
+    type = "text/css", 
+    paste(sep = "\n", "<!--", "div.iframeWrap {", htmltools::css(float = "right", 
+            width = "80%"), "}", "div.iframeWrap iframe {", 
+            htmltools::css(position = "absolute", top = 0, left = "20%", 
+                width = "80%", height = "100%"), "}", "-->")), 
+  htmltools::tags$div(class = "iframeWrap",
+                      htmltools::tags$iframe(src = html_list[1],
+                                             frameborder = "0",
+                                             name = "frameSample"))
+)
+side_area
+xxx
+
+```
+
+
